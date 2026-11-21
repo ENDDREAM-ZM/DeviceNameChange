@@ -42,7 +42,6 @@ tools/build.sh
 
 ## Notes
 
-- Bluetooth and hotspot names are set by the system; this module does not touch them.
 - `重启设置` needs root: it runs `am force-stop com.android.settings`.
 
 ## Credits
