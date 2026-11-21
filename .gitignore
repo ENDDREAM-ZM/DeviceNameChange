@@ -1,0 +1,8 @@
+*.apk
+*.idsig
+*.jar
+build/
+dist/
+*.jks
+*.keystore
+keystore-SIGNING.txt

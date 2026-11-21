@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Device Name Change</string>
+    <string name="xposed_description">解除设置中设备名称、蓝牙名称与热点名称的修改限制</string>
+
+    <string name="section_status">模块状态</string>
+    <string name="section_features">已解除的限制</string>
+    <string name="section_usage">使用步骤</string>
+    <string name="section_about">关于</string>
+
+    <string name="status_on">已生效</string>
+    <string name="status_off">未生效</string>
+    <string name="status_hint_on">模块已生效，可点击下方按钮去修改设备名称</string>
+    <string name="status_hint_off">在 LSPosed 中启用本模块，作用域勾选「设置」，然后重启设置应用</string>
+
+    <string name="feature_1">解除设备名称字数限制</string>
+    <string name="feature_2">解除蓝牙与热点名称字数限制</string>
+    <string name="feature_3">跳过云端名称校验</string>
+    <string name="feature_4">阻止开机重置名称</string>
+
+    <string name="usage_1">在 LSPosed 中启用 Device Name Change</string>
+    <string name="usage_2">作用域只需勾选「设置」（com.android.settings）</string>
+    <string name="usage_3">重启「设置」应用，进入 我的设备 → 设备名称 修改</string>
+
+    <string name="action_open">打开「设备名称」修改页</string>
+    <string name="action_open_failed">未找到设备名称修改页，请手动在设置中打开</string>
+
+    <string name="about_version">版本</string>
+    <string name="about_author">作者</string>
+    <string name="about_github">GitHub</string>
+    <string name="author_value">ENDDREAM</string>
+    <string name="github_url">https://github.com/ENDDREAM-ZM/DeviceNameChange</string>
+    <string name="github_value">github.com/ENDDREAM-ZM/DeviceNameChange</string>
+</resources>
