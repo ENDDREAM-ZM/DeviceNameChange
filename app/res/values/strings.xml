@@ -1,34 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Device Name Change</string>
-    <string name="xposed_description">解除设置中设备名称、蓝牙名称与热点名称的修改限制</string>
+    <string name="xposed_description">解除设置中设备名称的字数限制，可跳过云端名称校验并阻止开启时重置设备名称</string>
 
     <string name="section_status">模块状态</string>
-    <string name="section_features">已解除的限制</string>
+    <string name="section_shortcut">快捷跳转</string>
+    <string name="section_switch">功能开关</string>
     <string name="section_usage">使用步骤</string>
+    <string name="section_settings">设置</string>
     <string name="section_about">关于</string>
 
     <string name="status_on">已生效</string>
     <string name="status_off">未生效</string>
-    <string name="status_hint_on">模块已生效，可点击下方按钮去修改设备名称</string>
-    <string name="status_hint_off">在 LSPosed 中启用本模块，作用域勾选「设置」，然后重启设置应用</string>
+    <string name="status_hint_on">模块已生效，可按需开启下面的功能开关</string>
+    <string name="status_hint_off">模块未生效，请前往 LSPosed 管理器启用模块并勾选「设置」</string>
 
-    <string name="feature_1">解除设备名称字数限制</string>
-    <string name="feature_2">解除蓝牙与热点名称字数限制</string>
-    <string name="feature_3">跳过云端名称校验</string>
-    <string name="feature_4">阻止开机重置名称</string>
+    <string name="shortcut_device">设备名称</string>
+    <string name="shortcut_failed">未找到对应设置页，请手动在设置中打开</string>
 
-    <string name="usage_1">在 LSPosed 中启用 Device Name Change</string>
-    <string name="usage_2">作用域只需勾选「设置」（com.android.settings）</string>
-    <string name="usage_3">重启「设置」应用，进入 我的设备 → 设备名称 修改</string>
+    <string name="sw_device">解除设备名称字数限制</string>
+    <string name="sw_cloud">跳过云端设备名称校验</string>
+    <string name="sw_reset">阻止开启重置设备名称\n（未经测试，请谨慎开启）</string>
 
-    <string name="action_open">打开「设备名称」修改页</string>
-    <string name="action_open_failed">未找到设备名称修改页，请手动在设置中打开</string>
+    <string name="toast_on">已开启「%s」</string>
+    <string name="toast_off">已关闭「%s」</string>
+
+
+    <string name="cloud_dialog_title">跳过云端设备名称校验</string>
+    <string name="cloud_dialog_body">开启后，设备名称、蓝牙名称、热点名称在保存时不再经过小米服务器的合规校验，任何内容都会被直接写入。\n\n该功能仅用于让自定义名称正常保存，严禁用于设置违法违规、侵犯他人权益、冒充他人或官方机构、违反公序良俗的内容。由此产生的一切后果由使用者自行承担。\n\n继续即表示你理解并同意上述约定。</string>
+    <string name="cloud_dialog_ok">我已了解，开启</string>
+    <string name="cloud_dialog_cancel">取消</string>
+    <string name="cloud_dialog_never">不再提示</string>
+
+    <string name="usage_1">在 LSPosed 中启用本模块，作用域勾选「设置」</string>
+    <string name="usage_2">打开本应用，首次进入先阅读并同意用户协议与隐私政策</string>
+    <string name="usage_3">按需打开「功能开关」，开启后即可跳转修改</string>
+    <string name="usage_4">关闭开关后即自动恢复设备名称默认限制</string>
+
+    <string name="set_hide_icon">隐藏桌面图标</string>
+    <string name="set_hide_icon_desc">隐藏后可从设置里的应用信息或本页重新打开</string>
+    <string name="set_hide_icon_on">桌面图标已隐藏</string>
+    <string name="set_hide_icon_off">桌面图标已恢复</string>
 
     <string name="about_version">版本</string>
     <string name="about_author">作者</string>
-    <string name="about_github">GitHub</string>
+    <string name="about_agreement_user">用户协议</string>
+    <string name="about_agreement_privacy">隐私政策</string>
+    <string name="about_project">项目地址</string>
+    <string name="about_credits">引用</string>
+    <string name="agree_view">查看</string>
+    <string name="agree_next">下一步</string>
     <string name="author_value">ENDDREAM</string>
     <string name="github_url">https://github.com/ENDDREAM-ZM/DeviceNameChange</string>
-    <string name="github_value">github.com/ENDDREAM-ZM/DeviceNameChange</string>
+
+    <string name="credits_title">引用</string>
+    <string name="restart">重启设置</string>
+    <string name="restart_no_root">需要 root 权限：请在弹窗中允许授权后再次点击</string>
+    <string name="restart_done">已重启设置</string>
+    <string name="dialog_wait">我已了解，开启（%d）</string>
+    <string name="credits_failed">未找到可打开的应用</string>
+
+    <string name="agree_user_title">用户协议</string>
+    <string name="agree_privacy_title">隐私政策</string>
+    <string name="agree_user_body">一、模块说明\n本模块（Device Name Change）通过 Xposed 框架作用于系统设置，用于解除设备名称的字数限制，并提供跳过云端设备名称校验、阻止开启时重置设备名称等功能。模块仅在系统设置进程内运行，不收集、不上传任何个人数据，也不申请联网权限。\n\n二、使用许可\n本模块仅供个人在自己拥有或有权管理的设备上使用。禁止用于任何违法用途，禁止反向工程后以营利为目的二次分发。\n\n三、功能风险\n1. 跳过云端设备名称校验会绕过小米服务器对名称的合规检查，你不得利用该功能设置违法违规、侵犯他人权益、冒充他人或官方机构、违反公序良俗的内容，由此产生的一切后果由使用者自行承担。\n2. 阻止开启重置设备名称未经充分测试，可能导致名称被异常改写，请谨慎开启。\n\n四、免责声明\n本模块按现状提供，不对因使用本模块导致的设备异常、数据丢失、账号风险或法律责任作任何担保。使用前请确认你已理解上述风险并自愿承担。\n\n五、协议更新\n本协议可能随版本更新调整，更新后会在应用内展示新版本，继续使用即视为接受。\n\n只有同意本协议与隐私政策后，模块的全部功能才会生效。</string>
+    <string name="agree_privacy_body">一、我们不收集什么\n本模块不收集任何个人信息，不读取通讯录、短信、通话记录、位置、相册、麦克风、摄像头等数据，也不含任何统计或广告 SDK。\n\n二、数据保存在哪里\n1. 模块的开关配置与是否已同意协议，保存在本机应用私有目录，不会外传。\n2. 各开关的状态会写入本机系统设置（Settings.Global）供系统设置进程读取，不会外传。\n3. 你设置的设备名称会写入系统属性，用途仅为显示与生效。\n4. 模块不申请 INTERNET 权限，不存在任何网络上传行为。\n\n三、权限说明\n模块本体不需要任何敏感权限；「重启设置」需要 root 权限，用于强制停止并重启系统设置进程，除此之外不使用 root。\n\n四、数据删除\n卸载模块后，模块私有目录中的配置会一并删除；已写入系统的名称与设置会保留，可自行在设置里改回。\n\n五、联系方式\n如有疑问，可通过项目地址 github.com/ENDDREAM-ZM/DeviceNameChange 提交反馈。</string>
+    <string name="agree_accept">同意并继续</string>
+    <string name="agree_reject">不同意并退出</string>
+    <string name="agree_reject_toast">未同意协议，无法使用本模块</string>
 </resources>

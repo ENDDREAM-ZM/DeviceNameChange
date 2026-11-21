@@ -1,6 +1,8 @@
+import os
+import sys
 import zipfile
 
-base, dex, xposed_init, out = __import__("sys").argv[1:5]
+base, dex, meta_dir, out = sys.argv[1:5]
 
 with zipfile.ZipFile(base) as zin, zipfile.ZipFile(out, "w") as zout:
     for info in zin.infolist():
@@ -16,9 +18,14 @@ with zipfile.ZipFile(base) as zin, zipfile.ZipFile(out, "w") as zout:
         zi.compress_type = zipfile.ZIP_DEFLATED
         zout.writestr(zi, f.read())
 
-    with open(xposed_init, "rb") as f:
-        zi = zipfile.ZipInfo("assets/xposed_init")
-        zi.compress_type = zipfile.ZIP_DEFLATED
-        zout.writestr(zi, f.read())
+    for root, _, files in os.walk(meta_dir):
+        for name in files:
+            path = os.path.join(root, name)
+            rel = os.path.relpath(path, os.path.dirname(os.path.dirname(meta_dir)))
+            rel = rel.replace(os.sep, "/")
+            with open(path, "rb") as f:
+                zi = zipfile.ZipInfo(rel)
+                zi.compress_type = zipfile.ZIP_DEFLATED
+                zout.writestr(zi, f.read())
 
 print("packaged", out)

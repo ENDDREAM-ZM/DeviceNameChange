@@ -9,7 +9,8 @@ BT=$SDK/build-tools/36.0.0
 AAPT2=/opt/dshgo/bin/aapt2
 QEMU=/opt/dshgo/qemu-x86_64-static
 QROOT=/opt/dshgo/x86root
-LIBAPI=${LIBAPI:-$ROOT/tools/xposed-api-82.jar}
+LIBAPI=${LIBAPI:-$ROOT/tools/libxposed-api-102.jar}
+LIBSVC=${LIBSVC:-$ROOT/tools/libxposed-service-102.jar}
 OUT=$ROOT/dist
 BUILD=$ROOT/build
 
@@ -31,14 +32,15 @@ mkdir -p "$BUILD/compiled" "$BUILD/gen" "$BUILD/classes" "$BUILD/dex" "$OUT"
 find "$ROOT/src" "$BUILD/gen" -name '*.java' > "$BUILD/sources.txt"
 "$JDK/bin/javac" -encoding UTF-8 -source 8 -target 8 -nowarn \
     -bootclasspath "$PLATFORM:$BT/core-lambda-stubs.jar" \
-    -classpath "$LIBAPI" \
+    -classpath "$LIBAPI:$LIBSVC" \
     -d "$BUILD/classes" @"$BUILD/sources.txt"
 
 "$JDK/bin/jar" cf "$BUILD/classes.jar" -C "$BUILD/classes" .
 
-"$BT/d8" --release --min-api 29 --lib "$PLATFORM" --output "$BUILD/dex" "$BUILD/classes.jar"
+"$BT/d8" --release --min-api 29 --lib "$PLATFORM" --output "$BUILD/dex" \
+    "$BUILD/classes.jar" "$LIBSVC"
 
-python3 "$ROOT/tools/package.py" "$BUILD/base.apk" "$BUILD/dex/classes.dex" "$ROOT/assets/xposed_init" "$BUILD/aligned_in.apk"
+python3 "$ROOT/tools/package.py" "$BUILD/base.apk" "$BUILD/dex/classes.dex" "$ROOT/resources/META-INF/xposed" "$BUILD/aligned_in.apk"
 
 "$QEMU" -L "$QROOT" "$BT/zipalign" -f -p 4 "$BUILD/aligned_in.apk" "$BUILD/aligned.apk"
 
@@ -52,8 +54,8 @@ sh "$BT/apksigner" sign \
     --v1-signing-enabled true \
     --v2-signing-enabled true \
     --v3-signing-enabled true \
-    --out "$OUT/DeviceNameChange-1.0.0.apk" \
+    --out "$OUT/DeviceNameChange-1.0.1.apk" \
     "$BUILD/aligned.apk"
 
-sh "$BT/apksigner" verify --print-certs "$OUT/DeviceNameChange-1.0.0.apk"
-echo "built: $OUT/DeviceNameChange-1.0.0.apk"
+sh "$BT/apksigner" verify --print-certs "$OUT/DeviceNameChange-1.0.1.apk"
+echo "built: $OUT/DeviceNameChange-1.0.1.apk"

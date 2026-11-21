@@ -6,4 +6,6 @@
     <color name="text_primary">#141416</color>
     <color name="text_secondary">#6E6E73</color>
     <color name="icon_bg">#2C2C2E</color>
+    <color name="ripple">#1F000000</color>
+    <color name="pill">#F0F0F2</color>
 </resources>
