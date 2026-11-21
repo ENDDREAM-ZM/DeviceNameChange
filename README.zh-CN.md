@@ -42,7 +42,6 @@ tools/build.sh
 
 ## 说明
 
-- 蓝牙名称与热点名称由系统自行设置，本模块不做修改。
 - 「重启设置」需要 root，执行的是 `am force-stop com.android.settings`。
 
 ## 致谢
